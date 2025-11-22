@@ -1,0 +1,29 @@
+/* Container geral */
+.progress-container {
+  margin-bottom: 1.5rem;
+}
+
+/* Fundo da barra */
+.progress-background {
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* Progresso */
+.progress-fill {
+  height: 100%;
+  background: var(--accent-blue);
+  border-radius: inherit;
+  transition: width 0.3s ease;
+}
+
+/* Texto */
+.progress-text {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 6px;
+}

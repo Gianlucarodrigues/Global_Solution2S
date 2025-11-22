@@ -24,28 +24,35 @@ export default function Login() {
 
     navigate("/skillmatch");
   };
+navigate("/skillmatch", {
+  state: {
+    mensagem: "Bem-vindo ao SkillMatch! Aqui você poderá explorar competências essenciais, trilhas de desenvolvimento e oportunidades para evoluir na sua carreira."
+  }
+});
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
+    <div className="login-page">
+      <div className="login-container">
+        <h2>Login</h2>
 
-      <Input
-        label="Email"
-        type="email"
-        value={form.email}
-        onChange={handleChange}
-        name="email"
-      />
+        <Input
+          label="Email"
+          type="email"
+          value={form.email}
+          onChange={handleChange}
+          name="email"
+        />
 
-      <Input
-        label="Senha"
-        type="password"
-        value={form.senha}
-        onChange={handleChange}
-        name="senha"
-      />
+        <Input
+          label="Senha"
+          type="password"
+          value={form.senha}
+          onChange={handleChange}
+          name="senha"
+        />
 
-      <Button onClick={fazerLoginFake}>Entrar</Button>
+        <Button onClick={fazerLoginFake}>Entrar</Button>
+      </div>
     </div>
   );
 }

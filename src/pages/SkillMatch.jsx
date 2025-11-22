@@ -1,10 +1,10 @@
-
 import { useState } from "react";
 import CargoSelector from "../components/CargoSelector";
 import SkillList from "../components/SkillList";
 import Trilha from "../components/Trilha";
 import ProgressBar from "../components/ProgressBar";
 import "../styles/SkillMatch.css";
+import { useLocation } from "react-router-dom";
 
 export default function SkillMatch() {
   const cargos = {
@@ -59,6 +59,7 @@ export default function SkillMatch() {
         },
       ],
     },
+    
   };
 
   const [cargoSelecionado, setCargoSelecionado] = useState(null);
@@ -73,36 +74,55 @@ export default function SkillMatch() {
     ? Math.round((habilidadesConcluidas.length / totalSkills) * 100)
     : 0;
 
+const location = useLocation();
+const [mostrarAviso, setMostrarAviso] = useState(true);
+const mensagem = location.state?.mensagem;
+
+
   return (
-    <div className="p-8 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">SkillMatch</h1>
-
-      {!cargoSelecionado ? (
-        <CargoSelector cargos={cargos} onSelect={setCargoSelecionado} />
-      ) : (
-        <div>
-          <button
-            className="mb-4 text-blue-600 underline"
-            onClick={() => {
-              setCargoSelecionado(null);
-              setHabilidadesConcluidas([]);
-            }}
-          >
-            Voltar
-          </button>
-
-          <ProgressBar progresso={progresso} />
-
-          <SkillList
-            cargo={cargoSelecionado}
-            habilidadesConcluidas={habilidadesConcluidas}
-            setHabilidadesConcluidas={setHabilidadesConcluidas}
-          />
-
-          <Trilha trilha={cargoSelecionado.trilha} />
-        </div>
-      )}
+    <div className="p-8">   {/* DIV 1 ABERTA */}
+      {mensagem && mostrarAviso && (
+  <div className="modal-overlay">
+    <div className="modal-content">
+      <p>{mensagem}</p>
+      <button className="modal-close" onClick={() => setMostrarAviso(false)}>
+        Fechar
+      </button>
     </div>
+  </div>
+)}
+  
+
+      <div className="p-8 max-w-3xl mx-auto">   {/* DIV 2 ABERTA */}
+        <h1 className="text-3xl font-bold mb-6 skillmatch-title">SkillMatch</h1>
+
+        {!cargoSelecionado ? (
+          <CargoSelector cargos={cargos} onSelect={setCargoSelecionado} />
+        ) : (
+          <div>
+            <button
+              className="mb-4 text-blue-600 underline"
+              onClick={() => {
+                setCargoSelecionado(null);
+                setHabilidadesConcluidas([]);
+              }}
+            >
+              Voltar
+            </button>
+
+            <ProgressBar progresso={progresso} />
+
+            <SkillList
+              cargo={cargoSelecionado}
+              habilidadesConcluidas={habilidadesConcluidas}
+              setHabilidadesConcluidas={setHabilidadesConcluidas}
+            />
+
+            <Trilha trilha={cargoSelecionado.trilha} />
+          </div>
+        )}
+      </div> 
+
+    </div>    
   );
 }
-

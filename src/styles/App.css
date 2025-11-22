@@ -1,0 +1,117 @@
+/* ---------- ESTILIZAÇÃO GLOBAL ---------- */
+
+:root {
+  --bg-primary: #0d1117;      /* fundo principal (preto azulado) */
+  --bg-secondary: #161b22;    /* containers e cards */
+  --accent-blue: #0ea5e9;     /* azul suave */
+  --accent-blue-dark: #0284c7;
+  --text-primary: #e2e8f0;    /* texto principal */
+  --text-secondary: #94a3b8;  /* texto secundário */
+  --border-color: #1f2937;    /* bordas sutis */
+  --radius: 8px;
+  --transition: 0.2s ease-in-out;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* ---------- APP WRAPPER ---------- */
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding: 20px;
+}
+
+/* ---------- ESTILIZAÇÃO DE FORMULARIOS ---------- */
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: var(--radius);
+  outline: none;
+  transition: var(--transition);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+}
+
+/* ---------- BOTÕES ---------- */
+
+button {
+  background: var(--accent-blue);
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+button:hover {
+  background: var(--accent-blue-dark);
+}
+
+/* ---------- CARDS E SEÇÕES ---------- */
+
+.section,
+.card,
+.container {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  margin-bottom: 20px;
+}
+
+/* ---------- TEXTOS ---------- */
+
+h1, h2, h3 {
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+
+
+/* ---------- ERROS DE FORMULÁRIO ---------- */
+
+.erro {
+  color: #f87171; /* vermelho mais suave */
+  font-size: 0.8rem;
+  margin-top: 4px;
+  display: block;
+}
+.input-error {
+  border-color: #f87171; /* vermelho mais suave */
+}
